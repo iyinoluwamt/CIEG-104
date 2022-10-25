@@ -28,7 +28,7 @@ WORKING_DIR = os.path.dirname(os.path.realpath(__file__)) #Need to edit - My Dir
 # Redirect the output
 #sys.stdout = open(WORKING_DIR + "\\log.txt", "a")
 # Google API key
-API_KEY = 'AIzaSyD9RGaOD0OBo8QXWH6wnAaWZPHHIQCiA3I'   # CHANGE HERE!
+API_KEY = ''   # CHANGE HERE!
 # TTS zones' centroids (lat & long)
 ZONES_CENTROIDS_FILE_NAME = WORKING_DIR + '\\Dacentroid.csv'
 # Print debug statements
@@ -121,12 +121,12 @@ def find_overlapping_distances_multiple_routes(routes):
 def find_driving_routes(origin, destination, departureTime, myKey):
 	drivingRoutesAttributes = 6
 	result = [0 for i in range(drivingRoutesAttributes)]	# in the following format ['Travel time', 'Distance', 'Travel time', 'Distance', 'Tolled Distance', 'Overlapping Distance']
-	
+
 	if origin == destination:
 		return result
-	
+
 	serviceUrl = 'https://maps.googleapis.com/maps/api/directions/json?'
-	'urllib.urlencode was changed to urllib.parse.urlencode()'
+	# 'urllib.urlencode was changed to urllib.parse.urlencode()'
 	url = serviceUrl + urllib.parse.urlencode((
 				('origin', origin),
 				('destination', destination),
@@ -207,7 +207,7 @@ def find_transit_routes(origin, destination, departureTime, myKey):
 	maxTransitRoutes = 5
 	transitRoutesAttributes = 8
 	result = [0 for i in range(transitRoutesAttributes * maxTransitRoutes)]
-	
+
 	if origin == destination:
 		return result
 
@@ -298,7 +298,7 @@ def find_transit_routes(origin, destination, departureTime, myKey):
 					#transitAgency = step['transit_details']['line']['agencies'][0]['name']
 					#vehicleType = step['transit_details']['line']['vehicle']['type']
 					headway += step['transit_details'].get('headway',0)
-					
+
 
 				# add this route to the final route set, only if it's the first of its category to be found
 				#if len(transitAgencies) != 0 and not foundRoutes['_'.join(transitAgencies)]:
@@ -349,7 +349,7 @@ INPUT_FILE_NAME = filedialog.askopenfilename(initialdir = WORKING_DIR, title = "
 if INPUT_FILE_NAME == '':
 	print('No file has been chosen')
 	print('===================================================')
-	sys.exit()	
+	sys.exit()
 
 #INPUT_FILE_NAME = 'D:\\file for Islam\\test.csv'
 print('Processing %s' % INPUT_FILE_NAME)
@@ -406,7 +406,7 @@ try:
 				   + ['Overlapping Distance 1-2', 'Overlapping Distance 1-3', 'Overlapping Distance 1-4', 'Overlapping Distance 1-5'
 					  , 'Overlapping Distance 2-3', 'Overlapping Distance 2-4', 'Overlapping Distance 2-5'
 					  , 'Overlapping Distance 3-4', 'Overlapping Distance 3-5', 'Overlapping Distance 4-5']
-		
+
 	with open(OUTPUT_FILE_NAME, 'w', newline='') as fp:
 		'originally after file name, is was: wb changed to w so the file wasnt byte type '
 		a = csv.writer(fp, delimiter=',')
@@ -443,7 +443,7 @@ try:
 			startDateTimeTransit = baseDateTimeTransit + datetime.timedelta(weeks = 6, days = tripWeekday,
 											hours = (startTime//100)%24, minutes = startTime%100)
 			departureTimeTransit = googlemaps.convert.time(startDateTimeTransit)
-			
+
 			# get traffic & transit LOS
 			result = line
 			if MODE == 0 or MODE == 1:
