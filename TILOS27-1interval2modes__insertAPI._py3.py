@@ -19,18 +19,22 @@ import tkinter as tk
 from tkinter import filedialog
 'change from: import tkFileDialog as filedialog'
 
+
 # MODE	:	0	:	Traffic and Transit LOS
 #			1	:	Traffic LOS only
 #			2	:	Transit LOS only
 MODE = 0
 # Working directory
 WORKING_DIR = os.path.dirname(os.path.realpath(__file__)) #Need to edit - My Directory: C:\Users\jdrum\OneDrive\Desktop\Spring 2022\Modeling Hasnine\Discrete Choice\Students Move\SMTO API Input
+
 # Redirect the output
 #sys.stdout = open(WORKING_DIR + "\\log.txt", "a")
 # Google API key
-API_KEY = ''   # CHANGE HERE!
+config_file = open('config.json')
+CONFIG = json.load(config_file)
+API_KEY = CONFIG['apiKey']  # CHANGE HERE!
 # TTS zones' centroids (lat & long)
-ZONES_CENTROIDS_FILE_NAME = WORKING_DIR + '\\Dacentroid.csv'
+ZONES_CENTROIDS_FILE_NAME = WORKING_DIR + '/Dacentroid.csv'
 # Print debug statements
 debug = True
 
@@ -369,7 +373,7 @@ maxTransitRoutes = 5
 maxDrivingRoutes = 2
 
 # Labour day: Monday September 3, 2018
-baseDateTimeTraffic = datetime.datetime(2022, 4, 27)
+baseDateTimeTraffic = datetime.datetime.now() + datetime.timedelta(days=2)
 baseDateTimeTransit = next_weekday(datetime.datetime.now(), 0)
 
 # reading zones' centroids' coordinates into a dictionary
