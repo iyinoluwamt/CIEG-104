@@ -10,7 +10,7 @@
 
 ![img.png](res/manual.png)
 
-6. Some times google app may not be installed in your computer. In that situation try to run following code in command line interface (commad promt) 
+5. Some times google app may not be installed in your computer. In that situation try to run following code in command line interface (commad promt) 
 > pip install googlemaps && pip install geopy
 6. Once the program is finished, try to open it in Notepad++ and then copy in Excel. Alternatively, you can just open 
 
