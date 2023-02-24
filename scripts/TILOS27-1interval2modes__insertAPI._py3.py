@@ -1,4 +1,5 @@
 import csv
+import random
 import re
 import json
 import urllib
@@ -23,18 +24,18 @@ from tkinter import filedialog
 # MODE	:	0	:	Traffic and Transit LOS
 #			1	:	Traffic LOS only
 #			2	:	Transit LOS only
-MODE = 0
+MODE = 1
 # Working directory
 WORKING_DIR = os.path.dirname(os.path.realpath(__file__)) #Need to edit - My Directory: C:\Users\jdrum\OneDrive\Desktop\Spring 2022\Modeling Hasnine\Discrete Choice\Students Move\SMTO API Input
 
 # Redirect the output
 #sys.stdout = open(WORKING_DIR + "\\log.txt", "a")
 # Google API key
-config_file = open('config.json')
+config_file = open('../util/config.json')
 CONFIG = json.load(config_file)
 API_KEY = CONFIG['apiKey']  # CHANGE HERE!
 # TTS zones' centroids (lat & long)
-ZONES_CENTROIDS_FILE_NAME = WORKING_DIR + '/Dacentroid.csv'
+ZONES_CENTROIDS_FILE_NAME = '../data/Dacentroid.csv'
 # Print debug statements
 debug = True
 
@@ -143,9 +144,12 @@ def find_driving_routes(origin, destination, departureTime, myKey):
 		print(url)
 
 	try:
-		f = urlopen(url)
-		try: js = json.loads(f.read().decode('utf-8'))
+		response = requests.get(url)
+		try: js = response.json()
 		except: js = None
+
+
+
 		if 'status' not in js:
 			print('==== Failure To Retrieve ====')
 			print('Driving from ' + origin + 'to ' + destination)
@@ -275,7 +279,7 @@ def find_transit_routes(origin, destination, departureTime, myKey):
 				for stepId in range(0, len(route['steps'])):
 					step = route['steps'][stepId]
 					# if this step is 'walking'
-					if step['travel_mode'] == 'WALKING':
+					if step['travel_mode'] == 'DRIVING':
 						# total walking distance
 						walkingDistance += step['distance']['value']
 						# list of walking times (consecutive walking steps are added as a single step)
@@ -359,7 +363,7 @@ if INPUT_FILE_NAME == '':
 print('Processing %s' % INPUT_FILE_NAME)
 
 # Output file
-OUTPUT_FILE_NAME = INPUT_FILE_NAME + '_output.csv'
+OUTPUT_FILE_NAME = '../data/test_output.csv'
 
 # Start calculating execution time
 start_time = time.time()
@@ -372,9 +376,8 @@ latIndex = -1
 maxTransitRoutes = 5
 maxDrivingRoutes = 2
 
-# Labour day: Monday September 3, 2018
 baseDateTimeTraffic = datetime.datetime.now() + datetime.timedelta(days=2)
-baseDateTimeTransit = next_weekday(datetime.datetime.now(), 0)
+baseDateTimeTransit = next_weekday(datetime.datetime.now() + datetime.timedelta(days=2), 0)
 
 # reading zones' centroids' coordinates into a dictionary
 with open(ZONES_CENTROIDS_FILE_NAME, 'r') as f:
