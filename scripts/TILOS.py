@@ -376,8 +376,8 @@ latIndex = -1
 maxTransitRoutes = 5
 maxDrivingRoutes = 2
 
-baseDateTimeTraffic = datetime.datetime.now() + datetime.timedelta(days=2)
-baseDateTimeTransit = next_weekday(datetime.datetime.now() + datetime.timedelta(days=2), 0)
+baseDateTimeTraffic = datetime.datetime.now()
+baseDateTimeTransit = next_weekday(datetime.datetime.now(), 0)
 
 # reading zones' centroids' coordinates into a dictionary
 with open(ZONES_CENTROIDS_FILE_NAME, 'r') as f:
