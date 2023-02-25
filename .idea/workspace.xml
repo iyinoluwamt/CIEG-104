@@ -4,28 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="149324cc-93b8-4c9b-a53c-ee71fb573a4f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/CIEG-104.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CIEG-104.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="149324cc-93b8-4c9b-a53c-ee71fb573a4f" name="Changes" comment="Base date set to current datetime">
+      <change afterPath="$PROJECT_DIR$/scripts/TILOS-2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/directional.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dacentroid.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/Dacentroid.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Instruction Manual.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TILOS27-1interval2modes__insertAPI._py3.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/TILOS27-1interval2modes__insertAPI._py3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/global.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/global.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/input1.csv_output.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/input1_edit.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/input_test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/test_input.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input_test.csv_output.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/test_output.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/test_output.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/TILOS.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/TILOS.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -60,6 +56,58 @@
       <recent name="$PROJECT_DIR$/util" />
     </key>
   </component>
+  <component name="RunManager" selected="Python.TILOS-2">
+    <configuration name="TILOS-2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="CIEG-104" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/TILOS-2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TILOS" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="CIEG-104" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/TILOS.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.TILOS-2" />
+        <item itemvalue="Python.TILOS" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -70,8 +118,44 @@
       <updated>1667254311311</updated>
       <workItem from="1667254313640" duration="1306000" />
       <workItem from="1676667884525" duration="2442000" />
-      <workItem from="1677259347934" duration="3462000" />
+      <workItem from="1677259347934" duration="17635000" />
     </task>
+    <task id="LOCAL-00001" summary="Fixed output">
+      <created>1677262941655</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1677262941655</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Fixed output">
+      <created>1677263022027</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1677263022027</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Fixed output">
+      <created>1677263060827</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1677263060827</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fixed output">
+      <created>1677263084298</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1677263084298</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Base date set to current datetime">
+      <created>1677263610181</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1677263610181</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -88,7 +172,30 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fixed output" />
+    <MESSAGE value="Base date set to current datetime" />
+    <option name="LAST_COMMIT_MESSAGE" value="Base date set to current datetime" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scripts/directional.py</url>
+          <line>167</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scripts/directional.py</url>
+          <line>275</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CIEG_104$TILOS27_1interval2modes__insertAPI__py3.coverage" NAME="TILOS27-1interval2modes__insertAPI._py3 Coverage Results" MODIFIED="1677262817264" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
+    <SUITE FILE_PATH="coverage/CIEG_104$TILOS27_1interval2modes__insertAPI__py3.coverage" NAME="TILOS27-1interval2modes__insertAPI._py3 Coverage Results" MODIFIED="1677262860004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
+    <SUITE FILE_PATH="coverage/CIEG_104$TILOS_2.coverage" NAME="TILOS-2 Coverage Results" MODIFIED="1677291785140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
+    <SUITE FILE_PATH="coverage/CIEG_104$TILOS.coverage" NAME="TILOS Coverage Results" MODIFIED="1677280254011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
   </component>
 </project>
