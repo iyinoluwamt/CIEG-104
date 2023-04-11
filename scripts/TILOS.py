@@ -26,7 +26,7 @@ from directional import find_driving_routes
 # MODE	:	0	:	Traffic and Transit LOS
 #			1	:	Traffic LOS only
 #			2	:	Transit LOS only
-MODE = 1
+MODE = 2
 # Working directory
 WORKING_DIR = os.path.dirname(os.path.realpath(__file__)) #Need to edit - My Directory: C:\Users\jdrum\OneDrive\Desktop\Spring 2022\Modeling Hasnine\Discrete Choice\Students Move\SMTO API Input
 
