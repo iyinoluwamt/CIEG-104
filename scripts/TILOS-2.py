@@ -37,7 +37,7 @@ with open(ZONES_CENTROIDS_FILE_NAME, 'r') as f:
 	centroids = list(reader)
 	zones_centroids = {centroids[i][0]: centroids[i][1:len(centroids[0])] for i in range(1, len(centroids))}
 
-MODE = 0
+MODE = 2
 
 # last two elements in each row
 long_index = -2
