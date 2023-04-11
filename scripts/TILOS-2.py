@@ -133,9 +133,9 @@ try:
 			# get traffic & transit LOS
 			result = line
 			if MODE == 0 or MODE == 1:
-				result += find_driving_routes(origin, destination, departure_time_traffic, CONFIG['apiKey'])
+				result += find_driving_routes(origin, destination, departure_time_traffic, CONFIG['apiKey'])  # Add your API KEY
 			if MODE == 0 or MODE == 2:
-				result += find_transit_routes(origin, destination, departureTimeTransit, CONFIG['apiKey'])
+				result += find_transit_routes(origin, destination, departureTimeTransit, CONFIG['apiKey'])  # Add your API Key
 			print(result)
 			a.writerow(result)
 
