@@ -19,6 +19,8 @@ import tkinter as tk
 'change from: import Tkinter as tk (lower case t)'
 from tkinter import filedialog
 'change from: import tkFileDialog as filedialog'
+from directional import find_driving_routes
+
 
 
 # MODE	:	0	:	Traffic and Transit LOS
@@ -123,90 +125,90 @@ def find_overlapping_distances_multiple_routes(routes):
 '''
 	This function returns a list of attributes for two routes (1 untolled + 1 tolled), if exist, in case of 'driving' mode
 '''
-def find_driving_routes(origin, destination, departureTime, myKey):
-	drivingRoutesAttributes = 6
-	result = [0 for i in range(drivingRoutesAttributes)]	# in the following format ['Travel time', 'Distance', 'Travel time', 'Distance', 'Tolled Distance', 'Overlapping Distance']
-
-	if origin == destination:
-		return result
-
-	serviceUrl = 'https://maps.googleapis.com/maps/api/directions/json?'
-	# 'urllib.urlencode was changed to urllib.parse.urlencode()'
-	url = serviceUrl + urllib.parse.urlencode((
-				('origin', origin),
-				('destination', destination),
-				('departure_time', departureTime),
-				('mode', 'driving'),
-				('alternatives', 'true'),
-				('key', myKey)
-	 ))
-	if debug:
-		print(url)
-
-	try:
-		response = requests.get(url)
-		try: js = response.json()
-		except: js = None
-
-
-
-		if 'status' not in js:
-			print('==== Failure To Retrieve ====')
-			print('Driving from ' + origin + 'to ' + destination)
-			print('url: ' + url)
-			return result
-		elif js['status'] != 'OK':
-			print('==== Failure To Retrieve ====')
-			print(js['status'])
-			print('Driving from ' + origin + 'to ' + destination)
-			print('url: ' + url)
-			return result
-		else:
-			foundRoutes = {'untolled':False, 'tolled':False}
-			decodedPolylines = [[], []]
-			# loop through all available routes
-			for routeId in range (0, len(js['routes'])):
-				route = js['routes'][routeId]['legs'][0]	# only one trip (one leg)
-				if 'duration_in_traffic' in route:
-					travelTime = route['duration_in_traffic']['value']	 # in seconds
-				else:
-					travelTime = route['duration']['value']	 # in seconds
-				distance = route['distance']['value']	   # in meters
-
-				tolledDistance = 0
-				decodedPolyline = []
-				# loop through all steps of this route to check the tolls and get the polyline
-				for stepId in range (0, len (route['steps'])):
-					step = route['steps'][stepId]
-					htmlInstructions = step['html_instructions']
-					# check if this step contains driving over a tolled route
-					if 'toll road' in htmlInstructions.lower():
-						tolledDistance += step['distance']['value']
-					encodedPolyline = step['polyline']['points']
-					# this is the decoded polyline of the whole route
-					decodedPolyline = decodedPolyline + decode_polyline(encodedPolyline)
-
-				# check if this is the first untolled route
-				if not foundRoutes['untolled'] and tolledDistance == 0:
-					foundRoutes['untolled'] = True
-					result[0:2] = [travelTime, distance]
-					decodedPolylines[0] = decodedPolyline
-				# check if this is the first tolled route
-				elif not foundRoutes['tolled'] and tolledDistance != 0:
-					foundRoutes['tolled'] = True
-					result[2:5] = [travelTime, distance, tolledDistance]
-					decodedPolylines[1] = decodedPolyline
-				else:
-					continue
-				# stop looking for more alternative routes, if two routes (tolled & untolled) have already been found
-				if foundRoutes['untolled'] and foundRoutes['tolled']:
-					break
-
-			# find the overlapping distance if two routes have been found
-			if foundRoutes['untolled'] and foundRoutes['tolled']:
-				result[5] = find_overlapping_distance_two_routes(decodedPolylines[0], decodedPolylines[1])
-	except: return result
-	return result
+# def find_driving_routes(origin, destination, departureTime, myKey):
+# 	drivingRoutesAttributes = 6
+# 	result = [0 for i in range(drivingRoutesAttributes)]	# in the following format ['Travel time', 'Distance', 'Travel time', 'Distance', 'Tolled Distance', 'Overlapping Distance']
+#
+# 	if origin == destination:
+# 		return result
+#
+# 	serviceUrl = 'https://maps.googleapis.com/maps/api/directions/json?'
+# 	# 'urllib.urlencode was changed to urllib.parse.urlencode()'
+# 	url = serviceUrl + urllib.parse.urlencode((
+# 				('origin', origin),
+# 				('destination', destination),
+# 				('departure_time', departureTime),
+# 				('mode', 'driving'),
+# 				('alternatives', 'true'),
+# 				('key', myKey)
+# 	 ))
+# 	if debug:
+# 		print(url)
+#
+# 	try:
+# 		response = requests.get(url)
+# 		try: js = response.json()
+# 		except: js = None
+#
+#
+#
+# 		if 'status' not in js:
+# 			print('==== Failure To Retrieve ====')
+# 			print('Driving from ' + origin + 'to ' + destination)
+# 			print('url: ' + url)
+# 			return result
+# 		elif js['status'] != 'OK':
+# 			print('==== Failure To Retrieve ====')
+# 			print(js['status'])
+# 			print('Driving from ' + origin + 'to ' + destination)
+# 			print('url: ' + url)
+# 			return result
+# 		else:
+# 			foundRoutes = {'untolled':False, 'tolled':False}
+# 			decodedPolylines = [[], []]
+# 			# loop through all available routes
+# 			for routeId in range (0, len(js['routes'])):
+# 				route = js['routes'][routeId]['legs'][0]	# only one trip (one leg)
+# 				if 'duration_in_traffic' in route:
+# 					travelTime = route['duration_in_traffic']['value']	 # in seconds
+# 				else:
+# 					travelTime = route['duration']['value']	 # in seconds
+# 				distance = route['distance']['value']	   # in meters
+#
+# 				tolledDistance = 0
+# 				decodedPolyline = []
+# 				# loop through all steps of this route to check the tolls and get the polyline
+# 				for stepId in range (0, len (route['steps'])):
+# 					step = route['steps'][stepId]
+# 					htmlInstructions = step['html_instructions']
+# 					# check if this step contains driving over a tolled route
+# 					if 'toll road' in htmlInstructions.lower():
+# 						tolledDistance += step['distance']['value']
+# 					encodedPolyline = step['polyline']['points']
+# 					# this is the decoded polyline of the whole route
+# 					decodedPolyline = decodedPolyline + decode_polyline(encodedPolyline)
+#
+# 				# check if this is the first untolled route
+# 				if not foundRoutes['untolled'] and tolledDistance == 0:
+# 					foundRoutes['untolled'] = True
+# 					result[0:2] = [travelTime, distance]
+# 					decodedPolylines[0] = decodedPolyline
+# 				# check if this is the first tolled route
+# 				elif not foundRoutes['tolled'] and tolledDistance != 0:
+# 					foundRoutes['tolled'] = True
+# 					result[2:5] = [travelTime, distance, tolledDistance]
+# 					decodedPolylines[1] = decodedPolyline
+# 				else:
+# 					continue
+# 				# stop looking for more alternative routes, if two routes (tolled & untolled) have already been found
+# 				if foundRoutes['untolled'] and foundRoutes['tolled']:
+# 					break
+#
+# 			# find the overlapping distance if two routes have been found
+# 			if foundRoutes['untolled'] and foundRoutes['tolled']:
+# 				result[5] = find_overlapping_distance_two_routes(decodedPolylines[0], decodedPolylines[1])
+# 	except: return result
+# 	return result
 
 '''
 	This function returns a list of attributes for transit routes
@@ -238,9 +240,9 @@ def find_transit_routes(origin, destination, departureTime, myKey):
 		print(url)
 
 	try:
-		f = urlopen(url)
+		response = requests.get(url)
 		try:
-			js = json.loads(f.read().decode('utf-8'))
+			js = response.json()
 		except ValueError as err:
 			js = None
 			print(err)

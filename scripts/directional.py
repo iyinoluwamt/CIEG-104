@@ -91,6 +91,7 @@ def find_driving_routes(origin, destination, departure_time, my_key):
     ))
 
     try:
+        print(url)
         r = requests.get(url, timeout=3)
         json = r.json()
 
@@ -197,6 +198,7 @@ def find_transit_routes(origin, destination, departure_time, key):
     ))
 
     try:
+        print(url)
         r = requests.get(url)
         json = r.json()
 
@@ -233,7 +235,7 @@ def find_transit_routes(origin, destination, departure_time, key):
                 step = steps[s_id]
 
                 travel_mode = step['travel_mode']
-                if travel_mode is 'DRIVING':
+                if travel_mode == 'WALKING':
                     walking_distance += step['distance']['value']
                     # list of walking times (consecutive walking steps are added as a single step)
                     if prev_step_is_walking:
@@ -268,13 +270,16 @@ def find_transit_routes(origin, destination, departure_time, key):
                 decoded_polylines[route_category] = decoded_polyline
 
                 if len(walking_times) != 0:
-                    result[route_category * transit_routes_attributes: (route_category + 1) * transit_routes_attributes] = \
+                    result[
+                    route_category * transit_routes_attributes: (route_category + 1) * transit_routes_attributes] = \
                         [travel_time, distance, number_of_transfers, IVTT, walking_times[0], walking_times[-1],
                          walking_distance,
                          headway]
                 else:
-                    result[route_category * transit_routes_attributes: (route_category + 1) * transit_routes_attributes] = \
-                    [travel_time, distance, number_of_transfers, IVTT, 0, 0, walking_distance, headway]
+                    result[
+                    route_category * transit_routes_attributes: (route_category + 1) * transit_routes_attributes] = \
+                        [travel_time, distance, number_of_transfers, IVTT, 0, 0, walking_distance, headway]
+
 
     except requests.exceptions.HTTPError as errh:
         print("Http Error:", errh)
